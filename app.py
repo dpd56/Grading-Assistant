@@ -1,4 +1,4 @@
-from openai import OpenAI
+import openai
 import os
 import streamlit as st
 import csv
@@ -59,7 +59,7 @@ def grade_essay_with_feedback(essay_text: str, level: str) -> str:
     )
 
     try:
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": prompt},
