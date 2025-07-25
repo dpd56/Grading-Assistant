@@ -7,7 +7,8 @@ from io import StringIO
 from dotenv import load_dotenv  # Load environment variables from .env file
 
 load_dotenv()  # Load environment variables from .env file
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure OpenAI API key is set
 
 # ----------- GRADING ASSISTANT LOGIC ----------- #
 def grade_essay_with_feedback(essay_text: str, level: str) -> str:
