@@ -78,8 +78,85 @@ def export_grades_csv(grades: list) -> str:
     return csv_buffer.getvalue()
 
 # ----------- STREAMLIT UI ----------- #
-st.title("📚 Grading Assistant AI")
-st.header("📝 Grade and Improve Student Essays")
+
+# --- Custom CSS for blue/white theme --- #
+st.markdown(
+    """
+    <style>
+    body, .stApp {
+        background-color: #f7fbff;
+    }
+    .main, .block-container {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 2rem 2rem 1rem 2rem;
+    }
+    .stButton>button {
+        background-color: #2563eb;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        padding: 0.5em 1.5em;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: background 0.2s;
+    }
+    .stButton>button:hover {
+        background-color: #1e40af;
+        color: #fff;
+    }
+    .stTextInput>div>input, .stTextArea>div>textarea {
+        background: #f0f6ff;
+        border-radius: 6px;
+        border: 1px solid #2563eb22;
+    }
+    .stSelectbox>div>div>div>div {
+        background: #f0f6ff;
+        border-radius: 6px;
+        border: 1px solid #2563eb22;
+    }
+    .stRadio>div>label {
+        color: #2563eb;
+        font-weight: 600;
+    }
+    .stProgress>div>div>div {
+        background-color: #2563eb !important;
+    }
+    .stDownloadButton>button {
+        background-color: #2563eb;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: background 0.2s;
+    }
+    .stDownloadButton>button:hover {
+        background-color: #1e40af;
+        color: #fff;
+    }
+    .stAlert {
+        border-radius: 8px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# --- Logo/Hero Section --- #
+st.markdown(
+    """
+    <div style="display: flex; align-items: center; gap: 1.2em; margin-bottom: 0.5em;">
+        <img src="https://img.icons8.com/color/96/000000/grade.png" width="60" height="60" style="border-radius: 12px; box-shadow: 0 2px 8px rgba(37,99,235,0.08);"/>
+        <div>
+            <h1 style="margin-bottom: 0.1em; color: #2563eb; font-size: 2.3em; font-weight: 800; letter-spacing: -1px;">Grading Assistant AI</h1>
+            <div style="color: #1e293b; font-size: 1.1em; font-weight: 500;">Grade and improve student essays with AI-powered feedback</div>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 upload_mode = st.radio("Choose input mode:", ("Single Essay", "Batch Upload (CSV)"))
 level = st.selectbox("Select Evaluation Level:", ("High School", "College", "Professional"))
