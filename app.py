@@ -85,12 +85,14 @@ st.markdown(
     <style>
     body, .stApp {
         background-color: #f7fbff;
+        color: #1e293b !important;
     }
     .main, .block-container {
         background-color: #ffffff;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         padding: 2rem 2rem 1rem 2rem;
+        color: #1e293b !important;
     }
     .stButton>button {
         background-color: #2563eb;
@@ -110,11 +112,13 @@ st.markdown(
         background: #f0f6ff;
         border-radius: 6px;
         border: 1px solid #2563eb22;
+        color: #1e293b !important;
     }
     .stSelectbox>div>div>div>div {
         background: #f0f6ff;
         border-radius: 6px;
         border: 1px solid #2563eb22;
+        color: #1e293b !important;
     }
     .stRadio>div>label {
         color: #2563eb;
@@ -138,6 +142,9 @@ st.markdown(
     }
     .stAlert {
         border-radius: 8px;
+    }
+    * {
+        color: #1e293b;
     }
     </style>
     """,
