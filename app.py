@@ -143,12 +143,11 @@ st.markdown(
     .stAlert {
         border-radius: 8px;
     }
-    * {
-        color: #1e293b;
+    /* Removed universal selector to avoid unintended side effects */
+    /* Ensure all text in main content is dark */
+    .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div, .stDownloadButton>button, .stButton>button {
+        color: #1e293b !important;
     }
-    </style>
-    """,
-    unsafe_allow_html=True
 )
 
 # --- Logo/Hero Section --- #
