@@ -259,7 +259,7 @@ st.markdown(
             <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="64" height="64" style="filter: brightness(0) invert(1);"/>
         </div>
         <div>
-            <h1 style="margin-bottom: 0.2em; background: linear-gradient(135deg, #10b981 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; font-family: 'Inter', sans-serif;">Grading Assistant AI</h1>
+            <h1 style="margin-bottom: 0.2em; background: linear-gradient(135deg, #10b981 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; font-family: 'Inter', sans-serif;">🚀 UPDATED GRADING ASSISTANT AI 🚀</h1>
             <div style="color: #94a3b8; font-size: 1.2em; font-weight: 500; font-family: 'Inter', sans-serif;">✨ Intelligent essay grading with AI-powered feedback and insights ✨</div>
         </div>
     </div>
