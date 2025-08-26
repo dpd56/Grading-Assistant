@@ -30,49 +30,84 @@ if not api_key:
 # ----------- GRADING ASSISTANT LOGIC ----------- #
 def grade_essay_with_feedback(essay_text: str, level: str) -> str:
     level_instructions = {
-        "High School": "Evaluate as a high school teacher focusing on basic structure, clarity, and grammar.",
-        "College": "Evaluate as a college professor emphasizing argument strength, evidence, and academic tone.",
-        "Professional": "Evaluate as a professional editor, emphasizing critical thinking, precision, and polish."
+        "High School": "Evaluate as an experienced high school English teacher. Focus on fundamental writing skills: clear thesis statements, basic paragraph structure, grammar fundamentals, and developing analytical thinking. Encourage growth while being supportive of developing writers.",
+        "College": "Evaluate as a college professor with high academic standards. Emphasize sophisticated argumentation, college-level analysis, proper citation and evidence use, advanced writing mechanics, and critical thinking skills appropriate for undergraduate work.",
+        "Professional": "Evaluate as a professional editor and writing coach. Apply the highest standards for clarity, precision, persuasiveness, and polish. Expect publication-quality writing with sophisticated analysis, flawless mechanics, and compelling argumentation suitable for professional or graduate-level work."
     }
 
     prompt = (
-        f"You are an expert writing instructor grading a student essay. {level_instructions[level]}\n"
-        "Use the rubric below to assign a detailed score out of 100 and provide constructive feedback.\n\n"
-        "Rubric Criteria (each scored out of 20 points):\n"
-        "1. Thesis Clarity (20 points):\n"
-        "   - 17-20: Clear, specific, and consistently supported thesis.\n"
-        "   - 13-16: Clear thesis but may lack depth or consistent support.\n"
-        "   - 9-12: Weak or vague thesis.\n"
-        "   - 0-8: Unclear or missing thesis.\n\n"
-        "2. Evidence and Examples (20 points):\n"
-        "   - 17-20: Strong, relevant, and persuasive evidence throughout.\n"
-        "   - 13-16: Adequate evidence, but may lack specificity or depth.\n"
-        "   - 9-12: Weak or minimal evidence.\n"
-        "   - 0-8: Lacks supporting evidence.\n\n"
-        "3. Organization and Flow (20 points):\n"
-        "   - 17-20: Clear structure and excellent flow between paragraphs.\n"
-        "   - 13-16: Generally logical structure with minor issues.\n"
-        "   - 9-12: Some disorganization or weak transitions.\n"
-        "   - 0-8: Poor or confusing structure.\n\n"
-        "4. Grammar and Style (20 points):\n"
-        "   - 17-20: Virtually no errors, strong and effective style.\n"
-        "   - 13-16: Some grammar/style issues that don't significantly distract.\n"
-        "   - 9-12: Noticeable issues that detract from clarity.\n"
-        "   - 0-8: Frequent grammar/style issues.\n\n"
-        "5. Critical Thinking and Insight (20 points):\n"
-        "   - 17-20: Deep analysis and original insight.\n"
-        "   - 13-16: Reasonable insight with some depth.\n"
-        "   - 9-12: Basic analysis, lacks depth.\n"
-        "   - 0-8: Superficial or absent analysis.\n\n"
-        "Instructions:\n"
-        "- Provide a score for each category (out of 20).\n"
-        "- Sum the scores to calculate the final grade out of 100.\n"
-        "- Provide the corresponding letter grade using this scale:\n"
-        "   A = 93-100, A- = 90-92, B+ = 87-89, B = 83-86, B- = 80-82,\n"
-        "   C+ = 77-79, C = 73-76, C- = 70-72, D = 60-69, F = below 60\n"
-        "- Give overall feedback and suggestions for improvement.\n"
-        "- Highlight specific sentences that need revision and explain why.\n"
-        "- If grammar issues are present, suggest how to rewrite the sentences."
+        f"You are an expert writing instructor and educational AI assistant grading a student essay. {level_instructions[level]}\n\n"
+        
+        "🎯 GRADING FRAMEWORK:\n"
+        "Use the comprehensive rubric below to provide detailed, constructive feedback that helps students improve their writing skills.\n\n"
+        
+        "📊 RUBRIC CRITERIA (each scored out of 20 points):\n\n"
+        
+        "1. 💡 THESIS & ARGUMENT CLARITY (20 points):\n"
+        "   • 18-20: Exceptional thesis that is specific, arguable, and sophisticated. Consistently supported throughout.\n"
+        "   • 15-17: Strong, clear thesis with good support. Minor inconsistencies.\n"
+        "   • 12-14: Adequate thesis but may lack specificity or depth. Some support issues.\n"
+        "   • 9-11: Weak or vague thesis. Limited support.\n"
+        "   • 0-8: Unclear, missing, or non-arguable thesis.\n\n"
+        
+        "2. 📚 EVIDENCE & ANALYSIS (20 points):\n"
+        "   • 18-20: Compelling, relevant evidence with deep analysis. Multiple types of support.\n"
+        "   • 15-17: Good evidence with solid analysis. Most examples are relevant.\n"
+        "   • 12-14: Adequate evidence but analysis may be superficial or examples weak.\n"
+        "   • 9-11: Limited evidence with minimal analysis.\n"
+        "   • 0-8: Little to no supporting evidence or analysis.\n\n"
+        
+        "3. 🏗️ ORGANIZATION & STRUCTURE (20 points):\n"
+        "   • 18-20: Sophisticated organization with seamless transitions. Clear introduction, body, conclusion.\n"
+        "   • 15-17: Well-organized with good transitions. Logical flow.\n"
+        "   • 12-14: Generally organized but may have some structural issues or weak transitions.\n"
+        "   • 9-11: Some organization present but confusing structure.\n"
+        "   • 0-8: Poor or no clear organizational pattern.\n\n"
+        
+        "4. ✍️ WRITING MECHANICS & STYLE (20 points):\n"
+        "   • 18-20: Exceptional grammar, varied sentence structure, engaging style.\n"
+        "   • 15-17: Strong writing with minor errors. Good sentence variety.\n"
+        "   • 12-14: Generally correct with some grammar/style issues that don't impede understanding.\n"
+        "   • 9-11: Noticeable errors that occasionally distract from meaning.\n"
+        "   • 0-8: Frequent errors that significantly impede comprehension.\n\n"
+        
+        "5. 🧠 CRITICAL THINKING & ORIGINALITY (20 points):\n"
+        "   • 18-20: Original insights, complex thinking, addresses counterarguments.\n"
+        "   • 15-17: Good analysis with some original thinking.\n"
+        "   • 12-14: Basic analysis with limited original insight.\n"
+        "   • 9-11: Minimal critical thinking or originality.\n"
+        "   • 0-8: Lacks critical analysis or original thought.\n\n"
+        
+        "📋 RESPONSE FORMAT:\n"
+        "Provide your feedback in this structure:\n\n"
+        
+        "## 🎯 OVERALL GRADE\n"
+        "**Score: [X]/100 | Letter Grade: [X]**\n\n"
+        
+        "## 📊 DETAILED BREAKDOWN\n"
+        "• **Thesis & Argument:** [X]/20 - [brief comment]\n"
+        "• **Evidence & Analysis:** [X]/20 - [brief comment]\n"
+        "• **Organization:** [X]/20 - [brief comment]\n"
+        "• **Writing Mechanics:** [X]/20 - [brief comment]\n"
+        "• **Critical Thinking:** [X]/20 - [brief comment]\n\n"
+        
+        "## 💪 STRENGTHS\n"
+        "[Highlight 2-3 specific things the student did well]\n\n"
+        
+        "## 🎯 AREAS FOR IMPROVEMENT\n"
+        "[Identify 2-3 key areas with specific, actionable suggestions]\n\n"
+        
+        "## ✏️ SPECIFIC REVISIONS\n"
+        "[Quote specific sentences/phrases that need work and provide rewritten examples]\n\n"
+        
+        "## 🚀 NEXT STEPS\n"
+        "[Provide 1-2 concrete actions the student can take to improve their writing]\n\n"
+        
+        "GRADING SCALE:\n"
+        "A+ = 97-100, A = 93-96, A- = 90-92, B+ = 87-89, B = 83-86, B- = 80-82,\n"
+        "C+ = 77-79, C = 73-76, C- = 70-72, D+ = 67-69, D = 63-66, D- = 60-62, F = below 60\n\n"
+        
+        "Be encouraging but honest. Focus on growth and specific improvements rather than just pointing out flaws."
     )
 
     try:
