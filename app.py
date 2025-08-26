@@ -10,14 +10,21 @@ load_dotenv()  # Load environment variables from .env file
 
 # Get API key from environment or Streamlit secrets
 api_key = os.getenv("OPENAI_API_KEY")
-if not api_key and hasattr(st, 'secrets'):
-    api_key = st.secrets.get("OPENAI_API_KEY")
+
+# Try multiple ways to get the API key from Streamlit secrets
+if not api_key:
+    try:
+        if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
+            api_key = st.secrets["OPENAI_API_KEY"]
+    except Exception:
+        pass
 
 openai.api_key = api_key
 
 # Check if API key is configured
 if not api_key:
     st.error("⚠️ OpenAI API key not found. Please configure it in your environment variables or Streamlit secrets.")
+    st.error("Debug info: Make sure your secrets are saved correctly in Streamlit Cloud.")
     st.stop()
 
 # ----------- GRADING ASSISTANT LOGIC ----------- #
