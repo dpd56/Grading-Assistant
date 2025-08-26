@@ -148,6 +148,9 @@ st.markdown(
     .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div, .stDownloadButton>button, .stButton>button {
         color: #1e293b !important;
     }
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
 # --- Logo/Hero Section --- #
