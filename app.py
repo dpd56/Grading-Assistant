@@ -96,74 +96,120 @@ def export_grades_csv(grades: list) -> str:
 
 # ----------- STREAMLIT UI ----------- #
 
-# --- Custom CSS for blue/white theme --- #
+# --- Custom CSS for modern dark theme with emerald accents --- #
 st.markdown(
     """
     <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
     body, .stApp {
-        background-color: #f7fbff;
-        color: #1e293b !important;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: #e2e8f0 !important;
+        font-family: 'Inter', sans-serif;
     }
     .main, .block-container {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        padding: 2rem 2rem 1rem 2rem;
-        color: #1e293b !important;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        padding: 2.5rem 2.5rem 2rem 2.5rem;
+        color: #e2e8f0 !important;
     }
     .stButton>button {
-        background-color: #2563eb;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         color: white;
-        border-radius: 6px;
+        border-radius: 12px;
         border: none;
-        padding: 0.5em 1.5em;
+        padding: 0.75em 2em;
         font-weight: 600;
         font-size: 1.1em;
-        transition: background 0.2s;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        font-family: 'Inter', sans-serif;
     }
     .stButton>button:hover {
-        background-color: #1e40af;
-        color: #fff;
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
     }
     .stTextInput>div>input, .stTextArea>div>textarea {
-        background: #f0f6ff;
-        border-radius: 6px;
-        border: 1px solid #2563eb22;
-        color: #1e293b !important;
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #e2e8f0 !important;
+        font-family: 'Inter', sans-serif;
+        transition: border-color 0.2s ease;
+    }
+    .stTextInput>div>input:focus, .stTextArea>div>textarea:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
     }
     .stSelectbox>div>div>div>div {
-        background: #f0f6ff;
-        border-radius: 6px;
-        border: 1px solid #2563eb22;
-        color: #1e293b !important;
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #e2e8f0 !important;
+        font-family: 'Inter', sans-serif;
     }
     .stRadio>div>label {
-        color: #2563eb;
+        color: #10b981;
         font-weight: 600;
+        font-family: 'Inter', sans-serif;
     }
     .stProgress>div>div>div {
-        background-color: #2563eb !important;
+        background: linear-gradient(90deg, #10b981 0%, #059669 100%) !important;
+        border-radius: 10px;
     }
     .stDownloadButton>button {
-        background-color: #2563eb;
+        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
         color: white;
-        border-radius: 6px;
+        border-radius: 12px;
         border: none;
         font-weight: 600;
         font-size: 1.1em;
-        transition: background 0.2s;
+        padding: 0.75em 2em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        font-family: 'Inter', sans-serif;
     }
     .stDownloadButton>button:hover {
-        background-color: #1e40af;
-        color: #fff;
+        background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     .stAlert {
-        border-radius: 8px;
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(16, 185, 129, 0.3);
     }
-    /* Removed universal selector to avoid unintended side effects */
-    /* Ensure all text in main content is dark */
-    .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div, .stDownloadButton>button, .stButton>button {
-        color: #1e293b !important;
+    /* Ensure text visibility */
+    .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div {
+        color: #e2e8f0 !important;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.5);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-radius: 10px;
+    }
+    /* File uploader styling */
+    .stFileUploader>div>div>div {
+        background: rgba(15, 23, 42, 0.8);
+        border: 2px dashed rgba(16, 185, 129, 0.4);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+    .stFileUploader>div>div>div:hover {
+        border-color: #10b981;
+        background: rgba(16, 185, 129, 0.05);
     }
     </style>
     """,
@@ -173,52 +219,55 @@ st.markdown(
 # --- Logo/Hero Section --- #
 st.markdown(
     """
-    <div style="display: flex; align-items: center; gap: 1.2em; margin-bottom: 0.5em;">
-        <img src="https://img.icons8.com/color/96/000000/grade.png" width="60" height="60" style="border-radius: 12px; box-shadow: 0 2px 8px rgba(37,99,235,0.08);"/>
+    <div style="display: flex; align-items: center; gap: 1.5em; margin-bottom: 1em; padding: 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.2);">
+        <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 1rem; border-radius: 16px; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);">
+            <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="64" height="64" style="filter: brightness(0) invert(1);"/>
+        </div>
         <div>
-            <h1 style="margin-bottom: 0.1em; color: #2563eb; font-size: 2.3em; font-weight: 800; letter-spacing: -1px;">Grading Assistant AI</h1>
-            <div style="color: #1e293b; font-size: 1.1em; font-weight: 500;">Grade and improve student essays with AI-powered feedback</div>
+            <h1 style="margin-bottom: 0.2em; background: linear-gradient(135deg, #10b981 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; font-family: 'Inter', sans-serif;">Grading Assistant AI</h1>
+            <div style="color: #94a3b8; font-size: 1.2em; font-weight: 500; font-family: 'Inter', sans-serif;">✨ Intelligent essay grading with AI-powered feedback and insights</div>
         </div>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-upload_mode = st.radio("Choose input mode:", ("Single Essay", "Batch Upload (CSV)"))
-level = st.selectbox("Select Evaluation Level:", ("High School", "College", "Professional"))
+upload_mode = st.radio("🚀 Choose input mode:", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
+level = st.selectbox("🎯 Select Evaluation Level:", ("🎓 High School", "🎓 College", "💼 Professional"))
 
 grades = []
 
-if upload_mode == "Single Essay":
-    essay_input = st.text_area("Paste Essay Here:", height=300)
-    if st.button("Grade Essay"):
+if upload_mode == "📝 Single Essay":
+    essay_input = st.text_area("✍️ Paste Essay Here:", height=300, placeholder="Paste your essay text here for AI analysis...")
+    if st.button("🤖 Grade Essay with AI"):
         if essay_input.strip():
-            with st.spinner("Grading essay..."):
-                output = grade_essay_with_feedback(essay_input, level)
+            with st.spinner("🔍 AI is analyzing your essay..."):
+                output = grade_essay_with_feedback(essay_input, level.split(' ', 1)[1])  # Remove emoji from level
             grades.append([essay_input[:30] + "...", output])
-            st.subheader("Results")
+            st.subheader("📋 AI Analysis Results")
             st.markdown(output)
         else:
-            st.warning("Please enter an essay before grading.")
+            st.warning("⚠️ Please enter an essay before grading.")
 
-elif upload_mode == "Batch Upload (CSV)":
-    uploaded_csv = st.file_uploader("Upload a CSV with a column named 'Essay'", type="csv")
+elif upload_mode == "📊 Batch Upload (CSV)":
+    uploaded_csv = st.file_uploader("📁 Upload a CSV with a column named 'Essay'", type="csv")
     if uploaded_csv:
         try:
             df = pd.read_csv(uploaded_csv)
             if "Essay" in df.columns:
+                st.info(f"📊 Found {len(df)} essays to process!")
                 progress_bar = st.progress(0)
                 for idx, row in df.iterrows():
-                    feedback = grade_essay_with_feedback(row["Essay"], level)
+                    feedback = grade_essay_with_feedback(row["Essay"], level.split(' ', 1)[1])  # Remove emoji from level
                     grades.append([row["Essay"][:30] + "...", feedback])
                     progress_bar.progress((idx + 1) / len(df))
-                st.success("Batch grading completed.")
+                st.success("✅ Batch grading completed successfully!")
             else:
-                st.error("CSV must contain a column labeled 'Essay'.")
+                st.error("❌ CSV must contain a column labeled 'Essay'.")
         except Exception as e:
-            st.error(f"Error processing CSV: {e}")
+            st.error(f"💥 Error processing CSV: {e}")
 
 # ----------- CSV Export Option ----------- #
 if grades:
     csv_data = export_grades_csv(grades)
-    st.download_button("📥 Download Feedback as CSV", csv_data, "graded_essays.csv", "text/csv")
+    st.download_button("� Download Feedback as CSV", csv_data, "graded_essays.csv", "text/csv")
