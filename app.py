@@ -8,7 +8,17 @@ from dotenv import load_dotenv  # Load environment variables from .env file
 
 load_dotenv()  # Load environment variables from .env file
 
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure OpenAI API key is set
+# Get API key from environment or Streamlit secrets
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key and hasattr(st, 'secrets'):
+    api_key = st.secrets.get("OPENAI_API_KEY")
+
+openai.api_key = api_key
+
+# Check if API key is configured
+if not api_key:
+    st.error("⚠️ OpenAI API key not found. Please configure it in your environment variables or Streamlit secrets.")
+    st.stop()
 
 # ----------- GRADING ASSISTANT LOGIC ----------- #
 def grade_essay_with_feedback(essay_text: str, level: str) -> str:
