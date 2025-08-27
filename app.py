@@ -237,9 +237,8 @@ st.markdown(
         color: #f1f5f9 !important;
         font-weight: 700 !important;
         font-family: 'Inter', sans-serif !important;
-        font-size: 1.3rem !important;
+        font-size: 1.1em !important;
         text-shadow: 0 0 10px rgba(241, 245, 249, 0.3) !important;
-        margin-bottom: 1rem !important;
     }
     .stRadio>div>div>label {
         color: #f1f5f9 !important;
@@ -258,9 +257,8 @@ st.markdown(
         color: #f1f5f9 !important;
         font-weight: 700 !important;
         font-family: 'Inter', sans-serif !important;
-        font-size: 1.3rem !important;
+        font-size: 1.1em !important;
         text-shadow: 0 0 10px rgba(241, 245, 249, 0.3) !important;
-        margin-bottom: 1rem !important;
     }
     .stTextArea>div>label {
         color: #f1f5f9 !important;
@@ -415,141 +413,8 @@ st.markdown(
 )
 
 # Force deployment refresh - text visibility update
-# --- Enhanced Middle Section with Modern Cards ---
-st.markdown(
-    """
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2.5rem 0; padding: 0;">
-        <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%); 
-                    border: 2px solid rgba(59, 130, 246, 0.25); border-radius: 20px; padding: 2rem; 
-                    backdrop-filter: blur(15px); position: relative; overflow: hidden; 
-                    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                    transition: all 0.3s ease;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-                        background: linear-gradient(45deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%); 
-                        opacity: 0; transition: opacity 0.3s ease;" class="card-glow"></div>
-            <div style="position: relative; z-index: 1;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
-                                padding: 0.8rem; border-radius: 12px; 
-                                box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);">
-                        <span style="font-size: 1.5rem;">🚀</span>
-                    </div>
-                    <h3 style="color: #f1f5f9; font-weight: 700; font-size: 1.3rem; margin: 0; 
-                               text-shadow: 0 2px 10px rgba(241, 245, 249, 0.3);">Input Mode</h3>
-                </div>
-            </div>
-        </div>
-        
-        <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%); 
-                    border: 2px solid rgba(139, 92, 246, 0.25); border-radius: 20px; padding: 2rem; 
-                    backdrop-filter: blur(15px); position: relative; overflow: hidden; 
-                    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                    transition: all 0.3s ease;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-                        background: linear-gradient(45deg, rgba(139, 92, 246, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%); 
-                        opacity: 0; transition: opacity 0.3s ease;" class="card-glow"></div>
-            <div style="position: relative; z-index: 1;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); 
-                                padding: 0.8rem; border-radius: 12px; 
-                                box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);">
-                        <span style="font-size: 1.5rem;">🎯</span>
-                    </div>
-                    <h3 style="color: #f1f5f9; font-weight: 700; font-size: 1.3rem; margin: 0; 
-                               text-shadow: 0 2px 10px rgba(241, 245, 249, 0.3);">Evaluation Level</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <style>
-    .card-glow:hover {
-        opacity: 1 !important;
-    }
-    
-    /* Enhanced Radio Button Styling */
-    .stRadio {
-        background: transparent !important;
-        padding: 0 !important;
-    }
-    
-    .stRadio > div {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-    }
-    
-    .stRadio > div > div {
-        background: rgba(15, 23, 42, 0.6) !important;
-        border: 2px solid rgba(59, 130, 246, 0.2) !important;
-        border-radius: 16px !important;
-        padding: 1.2rem 1.5rem !important;
-        margin: 0.5rem 0 !important;
-        transition: all 0.3s ease !important;
-        backdrop-filter: blur(10px) !important;
-        position: relative !important;
-        overflow: hidden !important;
-    }
-    
-    .stRadio > div > div:hover {
-        border-color: rgba(59, 130, 246, 0.5) !important;
-        background: rgba(15, 23, 42, 0.8) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2) !important;
-    }
-    
-    .stRadio > div > div > label {
-        color: #f1f5f9 !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 1rem !important;
-        cursor: pointer !important;
-        width: 100% !important;
-    }
-    
-    /* Enhanced Selectbox Styling */
-    .stSelectbox > div > label {
-        display: none !important;
-    }
-    
-    .stSelectbox > div > div {
-        background: transparent !important;
-        border: none !important;
-    }
-    
-    .stSelectbox > div > div > div {
-        background: rgba(15, 23, 42, 0.6) !important;
-        border: 2px solid rgba(139, 92, 246, 0.2) !important;
-        border-radius: 16px !important;
-        padding: 1.2rem 1.5rem !important;
-        transition: all 0.3s ease !important;
-        backdrop-filter: blur(10px) !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
-    }
-    
-    .stSelectbox > div > div > div:hover {
-        border-color: rgba(139, 92, 246, 0.5) !important;
-        background: rgba(15, 23, 42, 0.8) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2) !important;
-    }
-    
-    /* Grid responsiveness */
-    @media (max-width: 768px) {
-        .stApp > div > div > div:nth-child(3) > div > div:nth-child(2) {
-            grid-template-columns: 1fr !important;
-        }
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-upload_mode = st.radio("", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
-level = st.selectbox("", ("🎓 High School", "🎓 College", "💼 Professional"))
+upload_mode = st.radio("🚀 Choose input mode:", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
+level = st.selectbox("🎯 Select Evaluation Level:", ("🎓 High School", "🎓 College", "💼 Professional"))
 
 grades = []
 
