@@ -318,7 +318,7 @@ st.markdown(
         backdrop-filter: blur(15px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
-    /* Ensure text visibility */
+    /* Ensure text visibility - AGGRESSIVE OVERRIDES */
     .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div {
         color: #f1f5f9 !important;
     }
@@ -328,8 +328,15 @@ st.markdown(
     }
     label, .stSelectbox label, .stTextArea label, .stTextInput label, .stFileUploader label {
         color: #f1f5f9 !important;
-        font-weight: 700;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        font-weight: 700 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    }
+    /* FORCE ALL TEXT TO BE VISIBLE */
+    * {
+        color: #f1f5f9 !important;
+    }
+    .stApp, .main, .block-container, div, p, span, label, input, textarea, select {
+        color: #f1f5f9 !important;
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
@@ -391,7 +398,7 @@ st.markdown(
             <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="72" height="72" style="filter: brightness(0) invert(1); animation: pulse 2s infinite;"/>
         </div>
         <div style="position: relative; z-index: 1;">
-            <h1 style="margin-bottom: 0.3em; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3.2em; font-weight: 900; letter-spacing: -2px; font-family: 'Inter', sans-serif; text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);">🚀 AI GRADING ASSISTANT 🚀</h1>
+            <h1 style="margin-bottom: 0.3em; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3.2em; font-weight: 900; letter-spacing: -2px; font-family: 'Inter', sans-serif; text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);">🚀 AI GRADING ASSISTANT v2.0 🚀</h1>
             <div style="color: #ffffff; font-size: 1.3em; font-weight: 600; font-family: 'Inter', sans-serif; text-shadow: 0 2px 15px rgba(255, 255, 255, 0.6); opacity: 0.95;">✨ Revolutionary AI-powered essay analysis and intelligent feedback ✨</div>
         </div>
     </div>
