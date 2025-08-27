@@ -413,8 +413,87 @@ st.markdown(
 )
 
 # Force deployment refresh - text visibility update
-upload_mode = st.radio("🚀 Choose input mode:", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
-level = st.selectbox("🎯 Select Evaluation Level:", ("🎓 High School", "🎓 College", "💼 Professional"))
+st.markdown(
+    """
+    <div style="margin: 2rem 0; padding: 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%); 
+                border-radius: 20px; border: 1px solid rgba(59, 130, 246, 0.15); backdrop-filter: blur(10px);
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+            <div style="position: relative;">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+                    <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+                                padding: 0.6rem; border-radius: 10px; 
+                                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+                        <span style="font-size: 1.2rem;">🚀</span>
+                    </div>
+                    <h3 style="color: #f1f5f9; font-weight: 700; font-size: 1.2rem; margin: 0; 
+                               text-shadow: 0 2px 8px rgba(241, 245, 249, 0.3);">Choose Input Mode</h3>
+                </div>
+            </div>
+            
+            <div style="position: relative;">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); 
+                                padding: 0.6rem; border-radius: 10px; 
+                                box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);">
+                        <span style="font-size: 1.2rem;">🎯</span>
+                    </div>
+                    <h3 style="color: #f1f5f9; font-weight: 700; font-size: 1.2rem; margin: 0; 
+                               text-shadow: 0 2px 8px rgba(241, 245, 249, 0.3);">Select Level</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    /* Enhanced Radio Button Styling */
+    .stRadio > div > div {
+        background: rgba(15, 23, 42, 0.5) !important;
+        border: 2px solid rgba(59, 130, 246, 0.2) !important;
+        border-radius: 12px !important;
+        padding: 1rem 1.2rem !important;
+        margin: 0.4rem 0 !important;
+        transition: all 0.3s ease !important;
+        backdrop-filter: blur(8px) !important;
+    }
+    
+    .stRadio > div > div:hover {
+        border-color: rgba(59, 130, 246, 0.4) !important;
+        background: rgba(15, 23, 42, 0.7) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15) !important;
+    }
+    
+    /* Enhanced Selectbox Styling */
+    .stSelectbox > div > div > div {
+        background: rgba(15, 23, 42, 0.5) !important;
+        border: 2px solid rgba(139, 92, 246, 0.2) !important;
+        border-radius: 12px !important;
+        padding: 1rem 1.2rem !important;
+        transition: all 0.3s ease !important;
+        backdrop-filter: blur(8px) !important;
+    }
+    
+    .stSelectbox > div > div > div:hover {
+        border-color: rgba(139, 92, 246, 0.4) !important;
+        background: rgba(15, 23, 42, 0.7) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15) !important;
+    }
+    
+    /* Responsive grid */
+    @media (max-width: 768px) {
+        .stApp div[data-testid="column"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+upload_mode = st.radio("", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
+level = st.selectbox("", ("🎓 High School", "🎓 College", "💼 Professional"))
 
 grades = []
 
