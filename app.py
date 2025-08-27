@@ -139,112 +139,189 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     
     body, .stApp {
-        background: red !important;
+        background: linear-gradient(135deg, #0a0b1e 0%, #1a1b3a 25%, #2d1b4e 50%, #1e2c5a 75%, #0f1419 100%) !important;
         color: white !important;
         font-family: 'Inter', sans-serif;
+        min-height: 100vh;
     }
     .main, .block-container {
-        background: rgba(30, 41, 59, 0.6);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        border-radius: 20px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 24px;
+        box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(59, 130, 246, 0.1);
         padding: 2.5rem 2.5rem 2rem 2.5rem;
-        color: #e2e8f0 !important;
+        color: #f1f5f9 !important;
+        position: relative;
+        overflow: hidden;
+    }
+    .main::before, .block-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 50%, rgba(16, 185, 129, 0.05) 100%);
+        pointer-events: none;
+        z-index: -1;
     }
     .stButton>button {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
         color: white;
-        border-radius: 12px;
+        border-radius: 16px;
         border: none;
-        padding: 0.75em 2em;
-        font-weight: 600;
+        padding: 0.9em 2.5em;
+        font-weight: 700;
         font-size: 1.1em;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.2);
         font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+    .stButton>button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+    .stButton>button:hover::before {
+        left: 100%;
     }
     .stButton>button:hover {
-        background: linear-gradient(135deg, #059669 0%, #047857 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e3a8a 100%);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
     }
     .stTextInput>div>input, .stTextArea>div>textarea {
-        background: rgba(15, 23, 42, 0.8);
-        border-radius: 12px;
-        border: 1px solid rgba(16, 185, 129, 0.3);
-        color: #e2e8f0 !important;
+        background: rgba(15, 23, 42, 0.9);
+        border-radius: 16px;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        color: #f1f5f9 !important;
         font-family: 'Inter', sans-serif;
-        transition: border-color 0.2s ease;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        font-size: 1.05em;
     }
     .stTextInput>div>input:focus, .stTextArea>div>textarea:focus {
-        border-color: #10b981;
-        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 8px 25px rgba(59, 130, 246, 0.2);
+        background: rgba(15, 23, 42, 0.95);
+        transform: scale(1.01);
     }
     .stSelectbox>div>div>div>div {
-        background: rgba(15, 23, 42, 0.8);
-        border-radius: 12px;
-        border: 1px solid rgba(16, 185, 129, 0.3);
-        color: #e2e8f0 !important;
+        background: rgba(15, 23, 42, 0.9);
+        border-radius: 16px;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        color: #f1f5f9 !important;
         font-family: 'Inter', sans-serif;
+        backdrop-filter: blur(10px);
     }
     .stRadio>div>label {
-        color: #10b981;
-        font-weight: 600;
+        color: #60a5fa;
+        font-weight: 700;
         font-family: 'Inter', sans-serif;
+        font-size: 1.1em;
+        text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
     .stProgress>div>div>div {
-        background: linear-gradient(90deg, #10b981 0%, #059669 100%) !important;
-        border-radius: 10px;
+        background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%) !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     }
     .stDownloadButton>button {
-        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
         color: white;
-        border-radius: 12px;
+        border-radius: 16px;
         border: none;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 1.1em;
-        padding: 0.75em 2em;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        padding: 0.9em 2.5em;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.2);
         font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+    .stDownloadButton>button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+    .stDownloadButton>button:hover::before {
+        left: 100%;
     }
     .stDownloadButton>button:hover {
-        background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.3);
     }
     .stAlert {
-        border-radius: 12px;
-        background: rgba(15, 23, 42, 0.8);
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 2px solid rgba(59, 130, 246, 0.3);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
     /* Ensure text visibility */
     .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div {
-        color: #e2e8f0 !important;
+        color: #f1f5f9 !important;
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
-        width: 8px;
+        width: 10px;
     }
     ::-webkit-scrollbar-track {
-        background: rgba(15, 23, 42, 0.5);
-        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
     }
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        border-radius: 12px;
+        border: 2px solid rgba(15, 23, 42, 0.3);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     }
     /* File uploader styling */
     .stFileUploader>div>div>div {
-        background: rgba(15, 23, 42, 0.8);
-        border: 2px dashed rgba(16, 185, 129, 0.4);
-        border-radius: 12px;
-        transition: all 0.3s ease;
+        background: rgba(15, 23, 42, 0.9);
+        border: 3px dashed rgba(59, 130, 246, 0.4);
+        border-radius: 20px;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+    }
+    .stFileUploader>div>div>div::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
     .stFileUploader>div>div>div:hover {
-        border-color: #10b981;
-        background: rgba(16, 185, 129, 0.05);
+        border-color: #3b82f6;
+        background: rgba(15, 23, 42, 0.95);
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+    }
+    .stFileUploader>div>div>div:hover::before {
+        opacity: 1;
     }
     </style>
     """,
@@ -254,15 +331,22 @@ st.markdown(
 # --- Logo/Hero Section --- #
 st.markdown(
     """
-    <div style="display: flex; align-items: center; gap: 1.5em; margin-bottom: 1em; padding: 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.2);">
-        <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 1rem; border-radius: 16px; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);">
-            <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="64" height="64" style="filter: brightness(0) invert(1);"/>
+    <div style="display: flex; align-items: center; gap: 2em; margin-bottom: 1.5em; padding: 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(6, 182, 212, 0.15) 100%); border-radius: 24px; border: 2px solid rgba(59, 130, 246, 0.3); backdrop-filter: blur(20px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.1) 100%); opacity: 0.7;"></div>
+        <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%); padding: 1.5rem; border-radius: 20px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1); position: relative; z-index: 1;">
+            <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="72" height="72" style="filter: brightness(0) invert(1); animation: pulse 2s infinite;"/>
         </div>
-        <div>
-            <h1 style="margin-bottom: 0.2em; background: linear-gradient(135deg, #10b981 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; font-family: 'Inter', sans-serif;">🚀 UPDATED GRADING ASSISTANT AI 🚀</h1>
-            <div style="color: #94a3b8; font-size: 1.2em; font-weight: 500; font-family: 'Inter', sans-serif;">✨ Intelligent essay grading with AI-powered feedback and insights ✨</div>
+        <div style="position: relative; z-index: 1;">
+            <h1 style="margin-bottom: 0.3em; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3.2em; font-weight: 900; letter-spacing: -2px; font-family: 'Inter', sans-serif; text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);">🚀 AI GRADING ASSISTANT 🚀</h1>
+            <div style="color: #cbd5e1; font-size: 1.3em; font-weight: 600; font-family: 'Inter', sans-serif; text-shadow: 0 0 20px rgba(203, 213, 225, 0.2);">✨ Revolutionary AI-powered essay analysis and intelligent feedback ✨</div>
         </div>
     </div>
+    <style>
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    </style>
     """,
     unsafe_allow_html=True
 )
