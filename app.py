@@ -293,6 +293,39 @@ st.markdown(
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
     }
+    /* Dropdown menu styling when expanded */
+    .stSelectbox ul[role="listbox"] {
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 2px solid rgba(59, 130, 246, 0.3) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(15px) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+    }
+    .stSelectbox li[role="option"] {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+        padding: 0.75rem 1rem !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 1.05em !important;
+    }
+    .stSelectbox li[role="option"]:hover {
+        background: rgba(59, 130, 246, 0.2) !important;
+        color: #ffffff !important;
+    }
+    /* Target the dropdown options more aggressively */
+    div[data-baseweb="popover"] ul {
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 2px solid rgba(59, 130, 246, 0.3) !important;
+        border-radius: 12px !important;
+    }
+    div[data-baseweb="popover"] li {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    div[data-baseweb="popover"] li:hover {
+        background: rgba(59, 130, 246, 0.2) !important;
+        color: #ffffff !important;
+    }
     .stRadio>div>label {
         color: #f1f5f9 !important;
         font-weight: 700 !important;
@@ -416,6 +449,20 @@ st.markdown(
         color: #f1f5f9 !important;
         background-color: rgba(15, 23, 42, 0.9) !important;
     }
+    
+    /* Target Streamlit's specific dropdown classes */
+    .st-emotion-cache-1y4p8pa select,
+    .st-emotion-cache-1y4p8pa div[data-baseweb="select"],
+    .st-emotion-cache-1y4p8pa ul[role="listbox"],
+    .st-emotion-cache-1y4p8pa li[role="option"],
+    .st-emotion-cache-1y4p8pa div[data-baseweb="popover"],
+    [class*="st-emotion-cache"] ul[role="listbox"] li,
+    [class*="st-emotion-cache"] div[data-baseweb="popover"] li,
+    [class*="st-emotion-cache"] [role="option"] {
+        color: #f1f5f9 !important;
+        background-color: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
         width: 10px;
@@ -471,20 +518,126 @@ st.markdown(
     div[data-testid="textInput"] input,
     div[data-testid="textArea"] textarea,
     div[data-testid="selectbox"] select,
-    div[data-baseweb="select"] > div {
+    div[data-baseweb="select"] > div,
+    ul[role="listbox"] li,
+    div[data-baseweb="popover"] li {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
         -webkit-text-fill-color: #f1f5f9 !important;
         caret-color: #f1f5f9 !important;
     }
     
+    /* AGGRESSIVE DROPDOWN TARGETING */
+    [data-baseweb="popover"] {
+        background: rgba(15, 23, 42, 0.95) !important;
+    }
+    [data-baseweb="popover"] * {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    [role="listbox"] {
+        background: rgba(15, 23, 42, 0.95) !important;
+    }
+    [role="listbox"] * {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    [role="option"] {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    [role="option"]:hover {
+        color: #ffffff !important;
+        background: rgba(59, 130, 246, 0.3) !important;
+    }
+    
     /* Override any Streamlit emotion cache classes */
     [class*="st-emotion-cache"] input,
     [class*="st-emotion-cache"] textarea,
     [class*="st-emotion-cache"] select,
-    [class*="st-emotion-cache"] div[data-baseweb="select"] {
+    [class*="st-emotion-cache"] div[data-baseweb="select"],
+    [class*="st-emotion-cache"] ul[role="listbox"],
+    [class*="st-emotion-cache"] li[role="option"] {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    /* SPECIFIC FIXES FOR SELECTBOX DROPDOWN TEXT */
+    .stSelectbox [data-baseweb="select"] {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] span {
+        color: #f1f5f9 !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] > div > div {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    
+    /* DROPDOWN MENU WHEN OPENED */
+    [data-baseweb="popover"] {
+        background: rgba(15, 23, 42, 0.98) !important;
+        border: 2px solid rgba(59, 130, 246, 0.4) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(20px) !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+    }
+    
+    [data-baseweb="popover"] ul {
+        background: transparent !important;
+        padding: 8px !important;
+    }
+    
+    [data-baseweb="popover"] li {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.7) !important;
+        border-radius: 8px !important;
+        margin: 2px 0 !important;
+        padding: 12px 16px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    [data-baseweb="popover"] li:hover {
+        color: #ffffff !important;
+        background: rgba(59, 130, 246, 0.4) !important;
+        transform: translateX(4px) !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    [data-baseweb="popover"] li[aria-selected="true"] {
+        color: #ffffff !important;
+        background: rgba(59, 130, 246, 0.6) !important;
+        font-weight: 600 !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    /* ADDITIONAL SELECTBOX TARGETING */
+    .stSelectbox div[role="button"] {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    .stSelectbox div[role="button"] span {
+        color: #f1f5f9 !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    /* FORCE ALL DROPDOWN COMPONENTS */
+    div[data-testid="stSelectbox"] * {
+        color: #f1f5f9 !important;
+    }
+    
+    div[data-testid="stSelectbox"] [data-baseweb="select"] * {
+        color: #f1f5f9 !important;
         -webkit-text-fill-color: #f1f5f9 !important;
     }
     </style>
@@ -519,19 +672,81 @@ st.markdown(
 st.markdown("""
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Inject aggressive CSS for dropdowns
+    const style = document.createElement('style');
+    style.textContent = `
+        [data-baseweb="popover"] ul,
+        [data-baseweb="popover"] li,
+        [role="listbox"],
+        [role="listbox"] li,
+        [role="option"] {
+            color: #f1f5f9 !important;
+            background: rgba(15, 23, 42, 0.95) !important;
+            -webkit-text-fill-color: #f1f5f9 !important;
+        }
+        [role="option"]:hover {
+            color: #ffffff !important;
+            background: rgba(59, 130, 246, 0.3) !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
     // Force text color on all inputs after page loads
     setTimeout(function() {
-        const inputs = document.querySelectorAll('input, textarea, select, div[data-baseweb="select"]');
+        const inputs = document.querySelectorAll('input, textarea, select, div[data-baseweb="select"], ul[role="listbox"] li, div[data-baseweb="popover"] li, [role="option"]');
         inputs.forEach(input => {
             input.style.setProperty('color', '#f1f5f9', 'important');
             input.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
+            input.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
         });
     }, 100);
+    
+    // Monitor for new dropdown elements
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1) { // Element node
+                    const dropdownElements = node.querySelectorAll('[data-baseweb="popover"], [role="listbox"], [role="option"]');
+                    dropdownElements.forEach(element => {
+                        element.style.setProperty('color', '#f1f5f9', 'important');
+                        element.style.setProperty('background', 'rgba(15, 23, 42, 0.95)', 'important');
+                        element.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
+                    });
+                    
+                    // Also check if the node itself is a dropdown element
+                    if (node.matches && (node.matches('[data-baseweb="popover"]') || node.matches('[role="listbox"]') || node.matches('[role="option"]'))) {
+                        node.style.setProperty('color', '#f1f5f9', 'important');
+                        node.style.setProperty('background', 'rgba(15, 23, 42, 0.95)', 'important');
+                        node.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
+                    }
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
 });
 </script>
 <style>
 /* EMERGENCY TEXT FIX - HIGHEST PRIORITY */
-input, textarea, select, div[data-baseweb="select"] > div {
+input, textarea, select, div[data-baseweb="select"] > div, ul[role="listbox"] li, div[data-baseweb="popover"] li, [role="option"] {
+    color: #f1f5f9 !important;
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+}
+
+/* EMERGENCY DROPDOWN FIX - SAME PRIORITY */
+[class*="st-emotion-cache"] ul[role="listbox"],
+[class*="st-emotion-cache"] ul[role="listbox"] li,
+[class*="st-emotion-cache"] div[data-baseweb="popover"],
+[class*="st-emotion-cache"] div[data-baseweb="popover"] li,
+[class*="st-emotion-cache"] [role="option"],
+ul[role="listbox"], 
+ul[role="listbox"] li,
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] li,
+div[data-baseweb="popover"] ul,
+div[data-baseweb="popover"] ul li {
     color: #f1f5f9 !important;
     background-color: rgba(15, 23, 42, 0.9) !important;
     -webkit-text-fill-color: #f1f5f9 !important;
@@ -577,21 +792,96 @@ if upload_mode == "📝 Single Essay":
         # Add continuous color fixing
         st.markdown("""
         <script>
-        // Continuous text color fix
+        // Continuous text color fix - AGGRESSIVE VERSION
         function fixTextColors() {
-            const inputs = document.querySelectorAll('input, textarea, select, div[data-baseweb="select"] > div');
-            inputs.forEach(input => {
-                if (input.style.color !== 'rgb(241, 245, 249)') {
-                    input.style.setProperty('color', '#f1f5f9', 'important');
-                    input.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
-                    input.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
-                }
+            // Target all possible dropdown selectors
+            const selectors = [
+                'input', 'textarea', 'select',
+                'div[data-baseweb="select"]',
+                'div[data-baseweb="select"] > div',
+                'div[data-baseweb="select"] span',
+                'div[data-baseweb="select"] *',
+                'div[role="button"]',
+                'div[role="button"] span',
+                'ul[role="listbox"]',
+                'ul[role="listbox"] li',
+                'li[role="option"]',
+                '[role="option"]',
+                'div[data-baseweb="popover"]',
+                'div[data-baseweb="popover"] ul',
+                'div[data-baseweb="popover"] li',
+                'div[data-baseweb="popover"] *',
+                '.stSelectbox *',
+                'div[data-testid="stSelectbox"] *'
+            ];
+            
+            selectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    element.style.setProperty('color', '#f1f5f9', 'important');
+                    element.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
+                    element.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
+                    element.style.setProperty('background', 'rgba(15, 23, 42, 0.9)', 'important');
+                });
             });
+            
+            // Also inject CSS directly
+            if (!document.getElementById('aggressive-dropdown-styles')) {
+                const style = document.createElement('style');
+                style.id = 'aggressive-dropdown-styles';
+                style.textContent = `
+                    /* MEGA AGGRESSIVE DROPDOWN FIXES */
+                    [data-baseweb="popover"] * {
+                        color: #f1f5f9 !important;
+                        background: rgba(15, 23, 42, 0.95) !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    [role="listbox"] * {
+                        color: #f1f5f9 !important;
+                        background: rgba(15, 23, 42, 0.95) !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    [role="option"] {
+                        color: #f1f5f9 !important;
+                        background: rgba(15, 23, 42, 0.9) !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    .stSelectbox [data-baseweb="select"] {
+                        color: #f1f5f9 !important;
+                        background: rgba(15, 23, 42, 0.9) !important;
+                    }
+                    .stSelectbox [data-baseweb="select"] * {
+                        color: #f1f5f9 !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    div[data-testid="stSelectbox"] * {
+                        color: #f1f5f9 !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    div[role="button"] {
+                        color: #f1f5f9 !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                    div[role="button"] span {
+                        color: #f1f5f9 !important;
+                        -webkit-text-fill-color: #f1f5f9 !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         }
         
-        // Run immediately and every 500ms
+        // Run immediately and every 200ms for faster response
         fixTextColors();
-        setInterval(fixTextColors, 500);
+        setInterval(fixTextColors, 200);
+        
+        // Fix colors on any interaction
+        ['click', 'mousedown', 'focus', 'mouseover'].forEach(event => {
+            document.addEventListener(event, function() {
+                setTimeout(fixTextColors, 50);
+                setTimeout(fixTextColors, 200);
+            });
+        });
         </script>
         """, unsafe_allow_html=True)
         
