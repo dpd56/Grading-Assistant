@@ -226,6 +226,13 @@ st.markdown(
         font-family: 'Inter', sans-serif;
         backdrop-filter: blur(10px);
     }
+    .stSelectbox>div>div>div>div>div {
+        color: #f1f5f9 !important;
+    }
+    .stSelectbox option {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
     .stRadio>div>label {
         color: #f1f5f9;
         font-weight: 700;
@@ -234,9 +241,17 @@ st.markdown(
         text-shadow: 0 0 10px rgba(241, 245, 249, 0.3);
     }
     .stRadio>div>div>label {
-        color: #60a5fa !important;
+        color: #f1f5f9 !important;
         font-weight: 600;
         font-family: 'Inter', sans-serif;
+        font-size: 1.05em;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .stRadio>div>div>label>div {
+        color: #f1f5f9 !important;
+    }
+    .stRadio>div>div {
+        color: #f1f5f9 !important;
     }
     .stSelectbox>div>label {
         color: #f1f5f9 !important;
