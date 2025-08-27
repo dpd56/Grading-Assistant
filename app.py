@@ -405,6 +405,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Force deployment refresh - text visibility update
 upload_mode = st.radio("🚀 Choose input mode:", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
 level = st.selectbox("🎯 Select Evaluation Level:", ("🎓 High School", "🎓 College", "💼 Professional"))
 
