@@ -567,16 +567,22 @@ st.markdown(
     .stSelectbox [data-baseweb="select"] {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     .stSelectbox [data-baseweb="select"] span {
         color: #f1f5f9 !important;
         -webkit-text-fill-color: #f1f5f9 !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     .stSelectbox [data-baseweb="select"] > div > div {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     /* DROPDOWN MENU WHEN OPENED */
@@ -624,21 +630,40 @@ st.markdown(
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
         -webkit-text-fill-color: #f1f5f9 !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     .stSelectbox div[role="button"] span {
         color: #f1f5f9 !important;
         -webkit-text-fill-color: #f1f5f9 !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     /* FORCE ALL DROPDOWN COMPONENTS */
     div[data-testid="stSelectbox"] * {
         color: #f1f5f9 !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
     }
     
     div[data-testid="stSelectbox"] [data-baseweb="select"] * {
         color: #f1f5f9 !important;
         -webkit-text-fill-color: #f1f5f9 !important;
+        cursor: pointer !important;
+        caret-color: transparent !important;
+    }
+    
+    /* HIDE CURSOR IN ALL SELECTBOX COMPONENTS */
+    .stSelectbox,
+    .stSelectbox *,
+    .stSelectbox [data-baseweb="select"],
+    .stSelectbox [data-baseweb="select"] *,
+    div[data-testid="stSelectbox"],
+    div[data-testid="stSelectbox"] * {
+        caret-color: transparent !important;
+        cursor: pointer !important;
     }
     </style>
     """,
