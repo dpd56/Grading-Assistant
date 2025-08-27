@@ -569,6 +569,8 @@ st.markdown(
         background: rgba(15, 23, 42, 0.9) !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     .stSelectbox [data-baseweb="select"] span {
@@ -576,6 +578,8 @@ st.markdown(
         -webkit-text-fill-color: #f1f5f9 !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     .stSelectbox [data-baseweb="select"] > div > div {
@@ -583,6 +587,8 @@ st.markdown(
         background: rgba(15, 23, 42, 0.9) !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     /* DROPDOWN MENU WHEN OPENED */
@@ -632,6 +638,8 @@ st.markdown(
         -webkit-text-fill-color: #f1f5f9 !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     .stSelectbox div[role="button"] span {
@@ -639,6 +647,8 @@ st.markdown(
         -webkit-text-fill-color: #f1f5f9 !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     /* FORCE ALL DROPDOWN COMPONENTS */
@@ -646,6 +656,8 @@ st.markdown(
         color: #f1f5f9 !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     div[data-testid="stSelectbox"] [data-baseweb="select"] * {
@@ -653,6 +665,8 @@ st.markdown(
         -webkit-text-fill-color: #f1f5f9 !important;
         cursor: pointer !important;
         caret-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     
     /* HIDE CURSOR IN ALL SELECTBOX COMPONENTS */
@@ -664,6 +678,23 @@ st.markdown(
     div[data-testid="stSelectbox"] * {
         caret-color: transparent !important;
         cursor: pointer !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* REMOVE FOCUS OUTLINES AND SELECTION BORDERS */
+    .stSelectbox [data-baseweb="select"]:focus,
+    .stSelectbox [data-baseweb="select"]:focus-within,
+    .stSelectbox [data-baseweb="select"]:active,
+    .stSelectbox div[role="button"]:focus,
+    .stSelectbox div[role="button"]:focus-within,
+    .stSelectbox div[role="button"]:active,
+    div[data-testid="stSelectbox"] *:focus,
+    div[data-testid="stSelectbox"] *:focus-within,
+    div[data-testid="stSelectbox"] *:active {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
     }
     </style>
     """,
