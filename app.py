@@ -227,11 +227,37 @@ st.markdown(
         backdrop-filter: blur(10px);
     }
     .stRadio>div>label {
-        color: #60a5fa;
+        color: #f1f5f9;
         font-weight: 700;
         font-family: 'Inter', sans-serif;
         font-size: 1.1em;
-        text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+        text-shadow: 0 0 10px rgba(241, 245, 249, 0.3);
+    }
+    .stRadio>div>div>label {
+        color: #60a5fa !important;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+    }
+    .stSelectbox>div>label {
+        color: #f1f5f9 !important;
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1em;
+        text-shadow: 0 0 10px rgba(241, 245, 249, 0.3);
+    }
+    .stTextArea>div>label {
+        color: #f1f5f9 !important;
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1em;
+        text-shadow: 0 0 10px rgba(241, 245, 249, 0.3);
+    }
+    .stFileUploader>div>label {
+        color: #f1f5f9 !important;
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1em;
+        text-shadow: 0 0 10px rgba(241, 245, 249, 0.3);
     }
     .stProgress>div>div>div {
         background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%) !important;
@@ -280,6 +306,15 @@ st.markdown(
     /* Ensure text visibility */
     .main, .block-container, .stTextInput>div>input, .stTextArea>div>textarea, .stSelectbox>div>div>div>div {
         color: #f1f5f9 !important;
+    }
+    /* Additional text styling for better visibility */
+    .stMarkdown, .stMarkdown p, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
+        color: #f1f5f9 !important;
+    }
+    label, .stSelectbox label, .stTextArea label, .stTextInput label, .stFileUploader label {
+        color: #f1f5f9 !important;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
