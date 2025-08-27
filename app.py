@@ -263,17 +263,33 @@ st.markdown(
         transform: scale(1.01);
     }
     .stSelectbox>div>div>div>div {
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(15, 23, 42, 0.9) !important;
         border-radius: 16px;
         border: 2px solid rgba(59, 130, 246, 0.2);
         color: #f1f5f9 !important;
         font-family: 'Inter', sans-serif;
         backdrop-filter: blur(10px);
+        font-size: 1.05em;
+        transition: all 0.3s ease;
     }
     .stSelectbox>div>div>div>div>div {
         color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    .stSelectbox select {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
     }
     .stSelectbox option {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    /* Additional selectbox targeting */
+    .stSelectbox div[data-baseweb="select"] {
+        background: rgba(15, 23, 42, 0.9) !important;
+        color: #f1f5f9 !important;
+    }
+    .stSelectbox div[data-baseweb="select"] > div {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
     }
@@ -448,11 +464,14 @@ st.markdown(
     }
     
     /* FINAL NUCLEAR OPTION FOR TEXT INPUTS */
-    input[type="text"], textarea, 
+    input[type="text"], textarea, select,
     .stTextInput input[type="text"],
     .stTextArea textarea,
+    .stSelectbox select,
     div[data-testid="textInput"] input,
-    div[data-testid="textArea"] textarea {
+    div[data-testid="textArea"] textarea,
+    div[data-testid="selectbox"] select,
+    div[data-baseweb="select"] > div {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
         -webkit-text-fill-color: #f1f5f9 !important;
@@ -461,7 +480,9 @@ st.markdown(
     
     /* Override any Streamlit emotion cache classes */
     [class*="st-emotion-cache"] input,
-    [class*="st-emotion-cache"] textarea {
+    [class*="st-emotion-cache"] textarea,
+    [class*="st-emotion-cache"] select,
+    [class*="st-emotion-cache"] div[data-baseweb="select"] {
         color: #f1f5f9 !important;
         background: rgba(15, 23, 42, 0.9) !important;
         -webkit-text-fill-color: #f1f5f9 !important;
@@ -500,7 +521,7 @@ st.markdown("""
 document.addEventListener('DOMContentLoaded', function() {
     // Force text color on all inputs after page loads
     setTimeout(function() {
-        const inputs = document.querySelectorAll('input, textarea');
+        const inputs = document.querySelectorAll('input, textarea, select, div[data-baseweb="select"]');
         inputs.forEach(input => {
             input.style.setProperty('color', '#f1f5f9', 'important');
             input.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
@@ -510,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <style>
 /* EMERGENCY TEXT FIX - HIGHEST PRIORITY */
-input, textarea {
+input, textarea, select, div[data-baseweb="select"] > div {
     color: #f1f5f9 !important;
     background-color: rgba(15, 23, 42, 0.9) !important;
     -webkit-text-fill-color: #f1f5f9 !important;
@@ -558,7 +579,7 @@ if upload_mode == "📝 Single Essay":
         <script>
         // Continuous text color fix
         function fixTextColors() {
-            const inputs = document.querySelectorAll('input, textarea');
+            const inputs = document.querySelectorAll('input, textarea, select, div[data-baseweb="select"] > div');
             inputs.forEach(input => {
                 if (input.style.color !== 'rgb(241, 245, 249)') {
                     input.style.setProperty('color', '#f1f5f9', 'important');
