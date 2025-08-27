@@ -170,9 +170,22 @@ def export_grades_csv(grades: list) -> str:
 # --- Custom CSS for modern dark theme with emerald accents --- #
 st.markdown(
     """
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    /* MOBILE-FIRST RESPONSIVE DESIGN */
+    html, body {
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Ensure proper mobile viewport */
+    .stApp {
+        touch-action: manipulation;
+    }
     
     body, .stApp {
         background: linear-gradient(135deg, #0a0b1e 0%, #1a1b3a 25%, #2d1b4e 50%, #1e2c5a 75%, #0f1419 100%) !important;
@@ -194,6 +207,121 @@ st.markdown(
         overflow: visible;
         max-height: none;
         height: auto;
+    }
+    
+    /* MOBILE RESPONSIVE LAYOUT */
+    @media (max-width: 768px) {
+        .main, .block-container {
+            padding: 1.5rem 1rem 1rem 1rem !important;
+            border-radius: 16px !important;
+            margin: 0.5rem !important;
+        }
+        
+        .stButton>button {
+            width: 100% !important;
+            padding: 1rem 1.5rem !important;
+            font-size: 1rem !important;
+            margin: 0.5rem 0 !important;
+        }
+        
+        .stTextArea>div>div>textarea {
+            min-height: 200px !important;
+            font-size: 16px !important; /* Prevents zoom on iOS */
+        }
+        
+        .stTextInput>div>div>input {
+            font-size: 16px !important; /* Prevents zoom on iOS */
+        }
+        
+        .stSelectbox>div>div>div>div {
+            font-size: 16px !important; /* Prevents zoom on iOS */
+            min-height: 48px !important; /* Better touch targets */
+        }
+        
+        .stRadio>div>div {
+            margin-bottom: 1rem !important;
+        }
+        
+        .stRadio>div>div>label {
+            font-size: 1rem !important;
+            padding: 0.75rem !important;
+        }
+        
+        .stFileUploader>div>div>div {
+            padding: 2rem 1rem !important;
+            margin: 1rem 0 !important;
+        }
+        
+        .stDownloadButton>button {
+            width: 100% !important;
+            padding: 1rem 1.5rem !important;
+            font-size: 1rem !important;
+            margin: 1rem 0 !important;
+        }
+        
+        /* Better spacing for mobile */
+        .stMarkdown {
+            margin-bottom: 1rem !important;
+        }
+        
+        /* Improve form labels on mobile */
+        .stSelectbox>div>label,
+        .stTextArea>div>label,
+        .stTextInput>div>label,
+        .stFileUploader>div>label,
+        .stRadio>div>label {
+            font-size: 1.1rem !important;
+            margin-bottom: 0.5rem !important;
+            display: block !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .main, .block-container {
+            padding: 1rem 0.75rem 0.75rem 0.75rem !important;
+            border-radius: 12px !important;
+            margin: 0.25rem !important;
+        }
+        
+        .stButton>button {
+            padding: 0.9rem 1.2rem !important;
+            font-size: 0.95rem !important;
+        }
+        
+        .stDownloadButton>button {
+            padding: 0.9rem 1.2rem !important;
+            font-size: 0.95rem !important;
+        }
+        
+        .stTextArea>div>div>textarea {
+            min-height: 180px !important;
+        }
+        
+        /* Smaller form elements on very small screens */
+        .stSelectbox>div>label,
+        .stTextArea>div>label,
+        .stTextInput>div>label,
+        .stFileUploader>div>label,
+        .stRadio>div>label {
+            font-size: 1rem !important;
+        }
+        
+        .stRadio>div>div>label {
+            font-size: 0.95rem !important;
+            padding: 0.6rem !important;
+        }
+    }
+    
+    /* TABLET RESPONSIVE */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .main, .block-container {
+            padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+        }
+        
+        .stButton>button,
+        .stDownloadButton>button {
+            padding: 0.8rem 2rem !important;
+        }
     }
     .main::before, .block-container::before {
         content: '';
@@ -696,6 +824,33 @@ st.markdown(
         box-shadow: none !important;
         border: none !important;
     }
+    
+    /* MOBILE DROPDOWN IMPROVEMENTS */
+    @media (max-width: 768px) {
+        [data-baseweb="popover"] {
+            max-height: 60vh !important;
+            overflow-y: auto !important;
+        }
+        
+        [data-baseweb="popover"] li {
+            padding: 16px 20px !important;
+            font-size: 16px !important;
+            min-height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .stSelectbox [data-baseweb="select"] {
+            min-height: 48px !important;
+            font-size: 16px !important;
+        }
+        
+        .stSelectbox [data-baseweb="select"] > div > div {
+            min-height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -704,20 +859,68 @@ st.markdown(
 # --- Logo/Hero Section --- #
 st.markdown(
     """
-    <div style="display: flex; align-items: center; gap: 2em; margin-bottom: 1.5em; padding: 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(6, 182, 212, 0.15) 100%); border-radius: 24px; border: 2px solid rgba(59, 130, 246, 0.3); backdrop-filter: blur(20px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
+    <div class="hero-container" style="display: flex; align-items: center; gap: 2em; margin-bottom: 1.5em; padding: 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(6, 182, 212, 0.15) 100%); border-radius: 24px; border: 2px solid rgba(59, 130, 246, 0.3); backdrop-filter: blur(20px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.1) 100%); opacity: 0.7;"></div>
-        <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%); padding: 1.5rem; border-radius: 20px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1); position: relative; z-index: 1;">
+        <div class="hero-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%); padding: 1.5rem; border-radius: 20px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1); position: relative; z-index: 1;">
             <img src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" width="72" height="72" style="filter: brightness(0) invert(1); animation: pulse 2s infinite;"/>
         </div>
-        <div style="position: relative; z-index: 1;">
-            <h1 style="margin-bottom: 0.3em; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3.2em; font-weight: 900; letter-spacing: -2px; font-family: 'Inter', sans-serif; text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);">🚀 AI GRADING ASSISTANT 🚀</h1>
-            <div style="color: #ffffff; font-size: 1.3em; font-weight: 600; font-family: 'Inter', sans-serif; text-shadow: 0 2px 15px rgba(255, 255, 255, 0.6); opacity: 0.95;">✨ Revolutionary AI-powered essay analysis and intelligent feedback ✨</div>
+        <div class="hero-text" style="position: relative; z-index: 1;">
+            <h1 class="hero-title" style="margin-bottom: 0.3em; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3.2em; font-weight: 900; letter-spacing: -2px; font-family: 'Inter', sans-serif; text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);">🚀 AI GRADING ASSISTANT 🚀</h1>
+            <div class="hero-subtitle" style="color: #ffffff; font-size: 1.3em; font-weight: 600; font-family: 'Inter', sans-serif; text-shadow: 0 2px 15px rgba(255, 255, 255, 0.6); opacity: 0.95;">✨ Revolutionary AI-powered essay analysis and intelligent feedback ✨</div>
         </div>
     </div>
     <style>
     @keyframes pulse {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.05); }
+    }
+    
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+        .hero-container {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 1.5em !important;
+            padding: 1.5rem 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .hero-icon {
+            padding: 1rem !important;
+        }
+        
+        .hero-icon img {
+            width: 56px !important;
+            height: 56px !important;
+        }
+        
+        .hero-title {
+            font-size: 2em !important;
+            letter-spacing: -1px !important;
+            line-height: 1.1 !important;
+            margin-bottom: 0.5em !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1em !important;
+            line-height: 1.4 !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 1.6em !important;
+            letter-spacing: 0px !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9em !important;
+        }
+        
+        .hero-container {
+            padding: 1rem 0.75rem !important;
+            border-radius: 16px !important;
+        }
     }
     </style>
     """,
