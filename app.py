@@ -36,78 +36,114 @@ def grade_essay_with_feedback(essay_text: str, level: str) -> str:
     }
 
     prompt = (
-        f"You are an expert writing instructor and educational AI assistant grading a student essay. {level_instructions[level]}\n\n"
+        f"You are an expert writing instructor with 15+ years of experience grading student essays. {level_instructions[level]}\n\n"
         
-        "🎯 GRADING FRAMEWORK:\n"
-        "Use the comprehensive rubric below to provide detailed, constructive feedback that helps students improve their writing skills.\n\n"
+        "🎯 ENHANCED GRADING FRAMEWORK:\n"
+        "Apply this comprehensive rubric to provide detailed, actionable feedback that drives student improvement. Consider consistency, specificity, and developmental appropriateness in your evaluation.\n\n"
         
-        "📊 RUBRIC CRITERIA (each scored out of 20 points):\n\n"
+        "📚 BENCHMARK REFERENCE - EXEMPLARY COLLEGE ESSAY (95/100):\n"
+        "Use this high-performing college essay as a reference point for quality standards, but adjust expectations appropriately for developmental level. This benchmark essay demonstrates:\n"
+        "- EXCEPTIONAL thesis: Clear stance on NCAA settlement's impact on non-revenue sports\n"
+        "- SOPHISTICATED argumentation: Multi-faceted analysis with cause-effect reasoning\n"
+        "- STRONG evidence integration: Current events (House v. NCAA), specific data, real examples\n"
+        "- EXCELLENT organization: Logical flow from problem to impact to solutions\n"
+        "- PROFICIENT writing mechanics: Clear, engaging prose with varied sentence structure\n"
+        "- ORIGINAL critical thinking: Nuanced perspective on complex issue with practical solutions\n\n"
         
-        "1. 💡 THESIS & ARGUMENT CLARITY (20 points):\n"
-        "   • 18-20: Exceptional thesis that is specific, arguable, and sophisticated. Consistently supported throughout.\n"
-        "   • 15-17: Strong, clear thesis with good support. Minor inconsistencies.\n"
-        "   • 12-14: Adequate thesis but may lack specificity or depth. Some support issues.\n"
-        "   • 9-11: Weak or vague thesis. Limited support.\n"
-        "   • 0-8: Unclear, missing, or non-arguable thesis.\n\n"
+        "Key strengths to look for based on this benchmark (adjust expectations for student level):\n"
+        "• Specific, arguable thesis that takes a clear position\n"
+        "• Integration of current events and real-world examples\n"
+        "• Logical progression from problem identification to solution proposal\n"
+        "• Use of credible sources and specific data/statistics\n"
+        "• Consideration of multiple stakeholders and perspectives\n"
+        "• Practical, actionable solutions supported by evidence\n"
+        "• Engaging introduction that establishes stakes and importance\n"
+        "• Strong conclusion that reinforces main argument and broader implications\n\n"
         
-        "2. 📚 EVIDENCE & ANALYSIS (20 points):\n"
-        "   • 18-20: Compelling, relevant evidence with deep analysis. Multiple types of support.\n"
-        "   • 15-17: Good evidence with solid analysis. Most examples are relevant.\n"
-        "   • 12-14: Adequate evidence but analysis may be superficial or examples weak.\n"
-        "   • 9-11: Limited evidence with minimal analysis.\n"
-        "   • 0-8: Little to no supporting evidence or analysis.\n\n"
+        "📊 DETAILED RUBRIC CRITERIA (each scored out of 20 points):\n\n"
         
-        "3. 🏗️ ORGANIZATION & STRUCTURE (20 points):\n"
-        "   • 18-20: Sophisticated organization with seamless transitions. Clear introduction, body, conclusion.\n"
-        "   • 15-17: Well-organized with good transitions. Logical flow.\n"
-        "   • 12-14: Generally organized but may have some structural issues or weak transitions.\n"
-        "   • 9-11: Some organization present but confusing structure.\n"
-        "   • 0-8: Poor or no clear organizational pattern.\n\n"
+        "1. 💡 THESIS & ARGUMENT DEVELOPMENT (20 points):\n"
+        "   • 18-20 (EXCEPTIONAL): Crystal-clear, sophisticated thesis that takes a compelling, nuanced position (like the NCAA essay's stance on protecting non-revenue sports). Arguments are logically sequenced, well-reasoned, and demonstrate deep understanding. Counter-arguments or complexities addressed thoughtfully.\n"
+        "   • 15-17 (PROFICIENT): Strong, specific thesis with clear argument structure. Most claims are well-developed and supported. Shows good understanding of topic complexity and multiple perspectives.\n"
+        "   • 12-14 (DEVELOPING): Thesis present and generally clear, though may lack some specificity or sophistication. Arguments are adequate and show understanding, with room for deeper development.\n"
+        "   • 9-11 (EMERGING): Basic thesis present but may be unclear or overly broad. Arguments need development but show some effort toward logical structure.\n"
+        "   • 0-8 (INADEQUATE): No identifiable thesis or argument structure. Claims are unsupported, contradictory, or missing entirely.\n\n"
         
-        "4. ✍️ WRITING MECHANICS & STYLE (20 points):\n"
-        "   • 18-20: Exceptional grammar, varied sentence structure, engaging style.\n"
-        "   • 15-17: Strong writing with minor errors. Good sentence variety.\n"
-        "   • 12-14: Generally correct with some grammar/style issues that don't impede understanding.\n"
-        "   • 9-11: Noticeable errors that occasionally distract from meaning.\n"
-        "   • 0-8: Frequent errors that significantly impede comprehension.\n\n"
+        "2. 📚 EVIDENCE & ANALYSIS QUALITY (20 points):\n"
+        "   • 18-20 (EXCEPTIONAL): Rich, credible evidence from multiple high-quality sources (current events, data, real examples like the Stanford case study). Analysis is sophisticated, insightful, and goes beyond surface-level observations. Evidence seamlessly integrated and supports all major claims.\n"
+        "   • 15-17 (PROFICIENT): Good variety of relevant evidence with solid analysis. Sources are credible and mostly well-integrated. Analysis shows clear understanding and some original insight.\n"
+        "   • 12-14 (DEVELOPING): Adequate evidence with basic analysis that demonstrates understanding. Some examples provided, though analysis could be deeper. Evidence generally supports the argument.\n"
+        "   • 9-11 (EMERGING): Limited evidence but shows effort to support claims. Analysis is basic but present. Some sources may be weak but attempts at integration are made.\n"
+        "   • 0-8 (INADEQUATE): Little to no evidence provided. No meaningful analysis present.\n\n"
         
-        "5. 🧠 CRITICAL THINKING & ORIGINALITY (20 points):\n"
-        "   • 18-20: Original insights, complex thinking, addresses counterarguments.\n"
-        "   • 15-17: Good analysis with some original thinking.\n"
-        "   • 12-14: Basic analysis with limited original insight.\n"
-        "   • 9-11: Minimal critical thinking or originality.\n"
-        "   • 0-8: Lacks critical analysis or original thought.\n\n"
+        "3. 🏗️ ORGANIZATION & COHERENCE (20 points):\n"
+        "   • 18-20 (EXCEPTIONAL): Masterful organization with seamless transitions and perfect logical flow (problem→impact→solutions structure). Introduction hooks reader and clearly previews structure. Conclusion synthesizes ideas powerfully and addresses broader implications.\n"
+        "   • 15-17 (PROFICIENT): Well-organized with effective transitions between ideas. Clear introduction, focused body paragraphs with topic sentences, and strong conclusion that reinforces main argument.\n"
+        "   • 12-14 (DEVELOPING): Generally well-organized with basic structure evident. Introduction, body, and conclusion present. Some transitions may be simple but structure is clear and logical.\n"
+        "   • 9-11 (EMERGING): Basic organization present with identifiable paragraphs. Structure may be simple but shows understanding of essay format. Some organizational issues but overall coherent.\n"
+        "   • 0-8 (INADEQUATE): No clear organizational pattern. Ideas presented randomly or incoherently.\n\n"
         
-        "📋 RESPONSE FORMAT:\n"
-        "Provide your feedback in this structure:\n\n"
+        "4. ✍️ LANGUAGE MASTERY & STYLE (20 points):\n"
+        "   • 18-20 (EXCEPTIONAL): Exceptional command of language with varied, sophisticated sentence structure. Precise, engaging word choice and tone appropriate for audience. Virtually error-free mechanics.\n"
+        "   • 15-17 (PROFICIENT): Strong control of language with clear, effective writing. Minor errors don't impede understanding. Good sentence variety and appropriate style.\n"
+        "   • 12-14 (DEVELOPING): Generally clear and readable language with adequate word choice. Some mechanical errors but meaning remains clear. Writing communicates ideas effectively with room for refinement.\n"
+        "   • 9-11 (EMERGING): Basic language use that conveys meaning adequately. Some errors present but don't significantly interfere with comprehension. Simple but functional style.\n"
+        "   • 0-8 (INADEQUATE): Serious mechanical problems that severely impact comprehension. Very limited language control.\n\n"
+        
+        "5. 🧠 CRITICAL THINKING & INTELLECTUAL DEPTH (20 points):\n"
+        "   • 18-20 (EXCEPTIONAL): Demonstrates exceptional critical thinking with original insights and intellectual depth (like analyzing unintended consequences of NCAA settlement on non-revenue sports). Makes connections others might miss. Challenges assumptions thoughtfully and considers multiple stakeholder perspectives with practical solutions.\n"
+        "   • 15-17 (PROFICIENT): Shows good critical thinking with some original ideas. Goes beyond obvious interpretations and demonstrates independent thought with consideration of multiple viewpoints.\n"
+        "   • 12-14 (DEVELOPING): Basic critical thinking present with some analysis beyond summary. Shows effort to think independently about the topic, though insights may be straightforward or obvious.\n"
+        "   • 9-11 (EMERGING): Some attempt at analysis or personal perspective, though may rely heavily on summary. Shows beginning stages of critical thinking development.\n"
+        "   • 0-8 (INADEQUATE): No evidence of critical thinking. Purely descriptive or factual with no analysis or original perspective.\n\n"
+        
+        "📋 ENHANCED RESPONSE FORMAT:\n"
+        "Provide detailed, specific feedback using this structure:\n\n"
         
         "## 🎯 OVERALL GRADE\n"
-        "**Score: [X]/100 | Letter Grade: [X]**\n\n"
+        "**Score: [X]/100 | Letter Grade: [X] | Performance Level: [EXCEPTIONAL/PROFICIENT/DEVELOPING/EMERGING/INADEQUATE]**\n\n"
         
-        "## 📊 DETAILED BREAKDOWN\n"
-        "• **Thesis & Argument:** [X]/20 - [brief comment]\n"
-        "• **Evidence & Analysis:** [X]/20 - [brief comment]\n"
-        "• **Organization:** [X]/20 - [brief comment]\n"
-        "• **Writing Mechanics:** [X]/20 - [brief comment]\n"
-        "• **Critical Thinking:** [X]/20 - [brief comment]\n\n"
+        "## 📊 COMPREHENSIVE BREAKDOWN\n"
+        "• **Thesis & Argument Development:** [X]/20 - [Specific explanation with text examples]\n"
+        "• **Evidence & Analysis Quality:** [X]/20 - [Specific explanation with text examples]\n"
+        "• **Organization & Coherence:** [X]/20 - [Specific explanation with text examples]\n"
+        "• **Language Mastery & Style:** [X]/20 - [Specific explanation with text examples]\n"
+        "• **Critical Thinking & Depth:** [X]/20 - [Specific explanation with text examples]\n\n"
         
-        "## 💪 STRENGTHS\n"
-        "[Highlight 2-3 specific things the student did well]\n\n"
+        "## 💪 NOTABLE STRENGTHS\n"
+        "[Highlight 2-3 specific accomplishments with quoted examples from the text. Be specific about what makes these elements successful.]\n\n"
         
-        "## 🎯 AREAS FOR IMPROVEMENT\n"
-        "[Identify 2-3 key areas with specific, actionable suggestions]\n\n"
+        "## 🎯 PRIORITY IMPROVEMENT AREAS\n"
+        "[Identify 2-3 most impactful areas for improvement, ranked by importance. Explain why these areas matter and how improvement would elevate the overall essay.]\n\n"
         
-        "## ✏️ SPECIFIC REVISIONS\n"
-        "[Quote specific sentences/phrases that need work and provide rewritten examples]\n\n"
+        "## ✏️ CONCRETE REVISION EXAMPLES\n"
+        "[Provide 3-4 specific examples: quote problematic text and offer improved versions. Show, don't just tell.]\n"
+        "- ORIGINAL: \"[Quote from essay]\"\n"
+        "- REVISED: \"[Your improved version]\"\n"
+        "- WHY: [Brief explanation of improvement]\n\n"
         
-        "## 🚀 NEXT STEPS\n"
-        "[Provide 1-2 concrete actions the student can take to improve their writing]\n\n"
+        "## 🚀 ACTIONABLE NEXT STEPS\n"
+        "1. **Immediate Action:** [One specific revision strategy for this essay]\n"
+        "2. **Skill Building:** [One practice exercise for future essays]\n"
+        "3. **Resource:** [Specific writing resource, technique, or area of study]\n\n"
+        
+        "## 📈 GROWTH TRACKING\n"
+        "[Comment on progress indicators and what to focus on for continued improvement]\n\n"
         
         "GRADING SCALE:\n"
         "A+ = 97-100, A = 93-96, A- = 90-92, B+ = 87-89, B = 83-86, B- = 80-82,\n"
         "C+ = 77-79, C = 73-76, C- = 70-72, D+ = 67-69, D = 63-66, D- = 60-62, F = below 60\n\n"
         
-        "Be encouraging but honest. Focus on growth and specific improvements rather than just pointing out flaws."
+        "**GRADING PRINCIPLES:**\n"
+        "- Use the benchmark essay as a reference point while adjusting expectations appropriately for student level\n"
+        "- Be encouraging and recognize effort while maintaining standards for growth\n"
+        "- Focus on specific, actionable improvements that help students progress toward benchmark quality\n"
+        "- Quote directly from the text when providing examples, showing how to build toward benchmark strengths\n"
+        "- Consider the writer's developmental stage and celebrate progress while pushing for continued growth\n"
+        "- Provide concrete strategies students can immediately implement to improve\n"
+        "- Balance constructive criticism with recognition of effort and existing strengths\n"
+        "- Look for evidence of benchmark qualities while acknowledging different levels of development\n"
+        "- Aim to inspire improvement rather than discourage; be rigorous but fair and supportive"
     )
 
     try:
@@ -203,7 +239,7 @@ st.markdown(
         box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
     }
     .stTextInput>div>input, .stTextArea>div>textarea {
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(15, 23, 42, 0.9) !important;
         border-radius: 16px;
         border: 2px solid rgba(59, 130, 246, 0.2);
         color: #f1f5f9 !important;
@@ -212,10 +248,18 @@ st.markdown(
         backdrop-filter: blur(10px);
         font-size: 1.05em;
     }
+    .stTextInput input, .stTextArea textarea {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+    }
+    .stTextInput input::placeholder, .stTextArea textarea::placeholder {
+        color: rgba(241, 245, 249, 0.6) !important;
+    }
     .stTextInput>div>input:focus, .stTextArea>div>textarea:focus {
-        border-color: #3b82f6;
+        border-color: #3b82f6 !important;
         box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 8px 25px rgba(59, 130, 246, 0.2);
-        background: rgba(15, 23, 42, 0.95);
+        background: rgba(15, 23, 42, 0.95) !important;
+        color: #f1f5f9 !important;
         transform: scale(1.01);
     }
     .stSelectbox>div>div>div>div {
@@ -338,6 +382,24 @@ st.markdown(
     .stApp, .main, .block-container, div, p, span, label, input, textarea, select {
         color: #f1f5f9 !important;
     }
+    
+    /* AGGRESSIVE TEXT INPUT FIXES */
+    .stTextInput input, .stTextArea textarea, 
+    .stTextInput > div > div > input, 
+    .stTextArea > div > div > textarea,
+    [data-testid="textInput"] input,
+    [data-testid="textArea"] textarea {
+        color: #f1f5f9 !important;
+        background-color: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    
+    /* Target Streamlit's specific input classes */
+    .st-emotion-cache-1y4p8pa input,
+    .st-emotion-cache-1y4p8pa textarea {
+        color: #f1f5f9 !important;
+        background-color: rgba(15, 23, 42, 0.9) !important;
+    }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
         width: 10px;
@@ -384,6 +446,26 @@ st.markdown(
     .stFileUploader>div>div>div:hover::before {
         opacity: 1;
     }
+    
+    /* FINAL NUCLEAR OPTION FOR TEXT INPUTS */
+    input[type="text"], textarea, 
+    .stTextInput input[type="text"],
+    .stTextArea textarea,
+    div[data-testid="textInput"] input,
+    div[data-testid="textArea"] textarea {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+        caret-color: #f1f5f9 !important;
+    }
+    
+    /* Override any Streamlit emotion cache classes */
+    [class*="st-emotion-cache"] input,
+    [class*="st-emotion-cache"] textarea {
+        color: #f1f5f9 !important;
+        background: rgba(15, 23, 42, 0.9) !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -413,14 +495,85 @@ st.markdown(
 )
 
 # Force deployment refresh - text visibility update
+st.markdown("""
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Force text color on all inputs after page loads
+    setTimeout(function() {
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.style.setProperty('color', '#f1f5f9', 'important');
+            input.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
+        });
+    }, 100);
+});
+</script>
+<style>
+/* EMERGENCY TEXT FIX - HIGHEST PRIORITY */
+input, textarea {
+    color: #f1f5f9 !important;
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 upload_mode = st.radio("🚀 Choose input mode:", ("📝 Single Essay", "📊 Batch Upload (CSV)"))
 level = st.selectbox("🎯 Select Evaluation Level:", ("🎓 High School", "🎓 College", "💼 Professional"))
 
 grades = []
 
 if upload_mode == "📝 Single Essay":
-    essay_input = st.text_area("✍️ Paste Essay Here:", height=300, placeholder="Paste your essay text here for AI analysis...")
+    # Custom styled text area with forced colors
+    st.markdown("""
+    <style>
+    .custom-textarea {
+        width: 100%;
+        height: 300px;
+        background: rgba(15, 23, 42, 0.9) !important;
+        color: #f1f5f9 !important;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        border-radius: 16px;
+        padding: 1rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.05em;
+        resize: vertical;
+        outline: none;
+        -webkit-text-fill-color: #f1f5f9 !important;
+    }
+    .custom-textarea:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+    .custom-textarea::placeholder {
+        color: rgba(241, 245, 249, 0.6) !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    essay_input = st.text_area("✍️ Paste Essay Here:", height=300, placeholder="Paste your essay text here for AI analysis...", key="essay_input")
     if st.button("🤖 Grade Essay with AI"):
+        # Add continuous color fixing
+        st.markdown("""
+        <script>
+        // Continuous text color fix
+        function fixTextColors() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.style.color !== 'rgb(241, 245, 249)') {
+                    input.style.setProperty('color', '#f1f5f9', 'important');
+                    input.style.setProperty('background-color', 'rgba(15, 23, 42, 0.9)', 'important');
+                    input.style.setProperty('-webkit-text-fill-color', '#f1f5f9', 'important');
+                }
+            });
+        }
+        
+        // Run immediately and every 500ms
+        fixTextColors();
+        setInterval(fixTextColors, 500);
+        </script>
+        """, unsafe_allow_html=True)
+        
         if essay_input.strip():
             with st.spinner("🔍 AI is analyzing your essay..."):
                 output = grade_essay_with_feedback(essay_input, level.split(' ', 1)[1])  # Remove emoji from level
