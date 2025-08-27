@@ -143,6 +143,8 @@ st.markdown(
         color: white !important;
         font-family: 'Inter', sans-serif;
         min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
     .main, .block-container {
         background: rgba(15, 23, 42, 0.8);
@@ -153,7 +155,9 @@ st.markdown(
         padding: 2.5rem 2.5rem 2rem 2.5rem;
         color: #f1f5f9 !important;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        max-height: none;
+        height: auto;
     }
     .main::before, .block-container::before {
         content: '';
