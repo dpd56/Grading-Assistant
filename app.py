@@ -139,8 +139,8 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     
     body, .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        color: #e2e8f0 !important;
+        background: red !important;
+        color: white !important;
         font-family: 'Inter', sans-serif;
     }
     .main, .block-container {
