@@ -14,12 +14,16 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Try multiple ways to get the API key from Streamlit secrets
 if not api_key:
     try:
-        if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
-            api_key = st.secrets["OPENAI_API_KEY"]
-    except Exception:
-        pass
+        # Use safer approach to access secrets
+        if hasattr(st, 'secrets'):
+            api_key = st.secrets.get("OPENAI_API_KEY", None)
+    except Exception as e:
+        # If secrets access fails, continue without API key
+        api_key = None
 
-openai.api_key = api_key
+# Set OpenAI API key if we have one
+if api_key:
+    openai.api_key = api_key
 
 # Check if API key is configured
 if not api_key:
