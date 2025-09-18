@@ -23,6 +23,7 @@ venv.bak/
 
 # Environment variables and secrets
 .env
+.streamlit/secrets.toml
 
 # Logs and data
 *.log
